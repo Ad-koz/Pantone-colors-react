@@ -11,11 +11,11 @@ import Paper from '@mui/material/Paper';
 
 export default function TabHead() {
   return (
-    <TableHead>
-          <TableRow>
-            <TableCell>Product Id</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Year</TableCell>
+    <TableHead sx={{width: "100px"}}>
+          <TableRow >
+            <TableCell sx={{width: "100px"}}>Product Id</TableCell>
+            <TableCell align="right" sx={{width: "100px"}}>Name</TableCell>
+            <TableCell align="right" sx={{width: "100px"}}>Year</TableCell>
           </TableRow>
         </TableHead>
   );

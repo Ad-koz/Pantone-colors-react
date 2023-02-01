@@ -10,13 +10,14 @@ import Paper from '@mui/material/Paper';
 
 
 
+
 function App() {
   return (
     <div className="App">
-     
+    
       <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-      <TabHead></TabHead>
+      
        <DataAPI></DataAPI>
        </Table>
     </TableContainer>

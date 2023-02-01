@@ -3,6 +3,12 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import ProductsTab from '../ProductsTab/ProductsTab';
 import { Typography } from '@mui/material'
+import TabHead from '../TabHead/TabHead';
+import Input from '../ClearButton/ClearButton';
+import ClearButton from '../ClearButton/ClearButton';
+import Pagination from '../Pagination/Pagination';
+import PaginatedTab from '../PaginatedTab/PaginatedTab';
+
 
 export interface ProductsObj 
   {
@@ -15,12 +21,14 @@ export interface ProductsObj
 
 
 const DataAPI = () => {
-  function refreshPage() {
-    window.location.reload();
-  }
+  function refreshPage () 
+    { window.location.reload()}
+  
   const [products, setProducts] = useState<ProductsObj[] | []>([]);
   const [query, setQuery] = useState("");
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState("");
+
+ 
   const [allProducts, setAllProducts] = useState([]);
   //const [searchInput, setSearchInput] = useState("")
   useEffect(() => {
@@ -33,7 +41,7 @@ const DataAPI = () => {
        
 })
     }, [])
-    const updateKeyword = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const updateKeyword = (e:React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();
       const filtered = products.filter(product => {
        return `${product.name.toLowerCase()} ${product.id}`.includes(keyword);
@@ -43,35 +51,45 @@ const DataAPI = () => {
       setProducts(filtered);
       if (keyword.length > 0) {
         products.filter((product) => {
-        return product.name.match(keyword);
+        return product.name.includes(keyword);
     });
     }
    }
+   const inputStyle = { marginTop: "30px"}
+  
+   //PAGINATION
+  
   return (
     <>
-    <button onClick={refreshPage}>Click to clear the filter</button>
+    <ClearButton  
+  ></ClearButton>
        <div>
-      <input placeholder="Enter id" type="search" value={keyword}  onChange={updateKeyword} 
+       <input style={inputStyle} placeholder="Enter id" type="search" value={keyword}  onChange={updateKeyword}
        onKeyPress={(event) => {
           if (!/[0-9]/.test(event.key)) {
             event.preventDefault();
           }
-        }} />
+        }} 
+        />
+        <TabHead></TabHead>
       {
       products.filter(product => {
-        if (query === '') {
-          return product;
-        } else if (product.name.toLowerCase().includes(query.toLowerCase())) {
-          return product;
+        if (keyword === product.name) {
+          return products;
+        } else if (product.name.toLowerCase().includes(keyword.toLowerCase())) {
+          return <ProductsTab product={product}></ProductsTab>;
         }
       }).map((product, index) => (
         <div className="box" key={index}>
-          <p>{product.name}</p>
-          <p>{product.id}</p>
+          <ProductsTab product={product}></ProductsTab>
+          
         </div>
       ))
     }
     </div>
+    
+    
+
 
    {/* {products.length !== 0 &&
     products.map((el, i) => {

@@ -1,12 +1,11 @@
 import { ProductsObj } from '../DataAPI/DataAPI';
 import * as React from 'react';
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
+import { Gradient } from '@mui/icons-material';
+import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { usePagination } from '@table-library/react-table-library/pagination';
 
 
 interface ProductProps {
@@ -14,21 +13,28 @@ interface ProductProps {
 }
 
 const ProductsTab = ({product}: ProductProps) => {
+ 
+  const tableStyles = {
+    width: "100px",
+    background: product.color
+  }
+ 
+
   return (
-    
-          
         
         <TableBody>
           
-           
-              <TableCell component="th" scope="row">
+           <TableRow>
+              <TableCell component="th" scope="row"  sx={{background: product.color,  width: "100px" }}>
                 {product.id}
               </TableCell>
-              <TableCell align="right">{product.name}</TableCell>
-              <TableCell align="right">{product.year}</TableCell>
-            
-          
+              <TableCell align="right" sx={{background: product.color,  width: "100px" }}>{product.name} </TableCell>
+              <TableCell align="right" sx={{background: product.color,  width: "100px" }}>{product.year}</TableCell>
+            </TableRow>
         </TableBody>
+       
+        
+       
    
   )
 }
