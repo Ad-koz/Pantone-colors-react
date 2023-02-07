@@ -31,6 +31,7 @@ const ProductsTab = ({product}: ProductProps) => {
 
   return (
         <>
+        <div className = 'table_div'>
         <TableBody>
            <TableRow 
            onClick = {toggleModal}
@@ -42,13 +43,13 @@ const ProductsTab = ({product}: ProductProps) => {
               <TableCell align="right" sx={{background: product.color,  width: "100px" }}>{product.year}</TableCell>
             </TableRow>
         </TableBody>
-      
+      </div>
 
    {modal && (
     <div className="modal">
     <div className="overlay"></div>
     <div className="modal-content">
-        <h2>Product informations</h2>
+        <h2 className = "modal-title">Product informations</h2>
         <p>Id: {product.id}</p>
         <p>Name: {product.name}</p>
         <p>Year: {product.year}</p>

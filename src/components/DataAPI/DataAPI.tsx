@@ -8,6 +8,7 @@ import Input from '../ClearButton/ClearButton';
 import ClearButton from '../ClearButton/ClearButton';
 import Pagination from '../Pagination/Pagination';
 import { convertCompilerOptionsFromJson } from 'typescript';
+import "./DataAPI.css";
 
 
 
@@ -53,13 +54,15 @@ const DataAPI = () => {
     .then((dane) => {
        setProducts(dane.data)
       })
-    .catch(error => console.error('Error: ', error))
+    .catch(err => {
+      console.log(err.message) 
+    })
     }, []);
 
   const updateKeyword = (e:React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();
       const filtered = products.filter(product => {
-       return `${product.name.toLowerCase()} ${product.id}`.includes(keyword);
+       return `${product.name} ${product.id}`.includes(keyword);
        
       })
       setKeyword(e.target.value);
@@ -79,18 +82,21 @@ const DataAPI = () => {
    const currentPosts = products.slice(firstPostIndex, lastPostIndex)
   
 
-   const inputStyle = { marginTop: "30px"}
+   
   return (
     <>
     <ClearButton/>
-       <div>
-       <input style={inputStyle} placeholder="Enter id" type="search" value={keyword}  onChange={updateKeyword}
+       <div className = "tab">
+        <div className="form__group__field">
+       <input className="form__field"  placeholder="Enter id" id='name' type="search" value={keyword}  onChange={updateKeyword}
        onKeyPress={(event) => {
           if (!/[0-9]/.test(event.key)) {
             event.preventDefault();
           }
         }} 
         />
+        <label className="form__label"></label>
+        </div>
         <TabHead/>
       {
       currentPosts.filter(product => {

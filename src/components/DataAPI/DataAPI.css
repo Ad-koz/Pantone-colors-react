@@ -1,0 +1,40 @@
+.form__group__field {
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 3rem;
+}
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 50%;
+  color: #6a8ee9
+}
+
+.form__field {
+  font-family: 'roboto';
+  width: 10%;
+  border: 0;
+  border-bottom: 1px solid #6a8ee9;
+  outline: 0;
+  font-size: 1.0rem;
+  color: #6a8ee9;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+
+
+}
+
+.form__field:focus {
+ 
+  padding-bottom: 2px;  
+  font-weight: 500;
+  border-width: 2px;
+  color: #6a8ee9;
+  padding: 7px 0;
+  
+}
+

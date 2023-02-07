@@ -6,23 +6,23 @@
 }
 
 .pagination button {
-    width: 40px;
-    height: 40px;
-    font-family: inherit;
+    width: 30px;
+    height: 30px;
+    font-family: 'roboto';
     font-weight: 600;
-    font-size: 16px;
+    font-size: 12px;
     margin: 0 10px;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     background: transparent;
-    color: rgb(178, 170, 170);
-    border-color: #eee;
+    color: rgb(169, 171, 206);
+    border: 1px solid  #6a8ee9
 }
 
 .pagination button.active {
     font-weight: 900;
-    border-color: #aba4a4;
-    background: #a9c0bf;
-    color: #101010;
+    border-color: #6a8ee9;
+    background: #dee4f3;
+    color: #3365ab;
 }
